@@ -8,6 +8,9 @@ Together, Rose and Jocelyn, compiled the lullaby titles from the Mama Lisa websi
 
 We then tested our hypothesis that lullabies have cross-culturally soothing effects. We focused on soothing effects due to melodic structure. We constrained melodic structure as the ratio of steps and leaps in a song, the note density of a song, the ratio of long and short notes in a song, the phrase lengths found in a song, and the contour of phrases found in a song. We analyzed these features using Music21 and Humdrum, then we ran statistical tests to find similarity. We ran individual T-tests and a Chi-Square test, and we failed to find a significant difference between Chinese and German lullabies across all our melodic features, as predicted. 
 
+## File Guide
+Corpus folder includes the krn files that we transcribed and compiled. The corpus description pdf describes the contents of the corpus and our procedures for creating it. The final project Jupyter Notebook includes the code we wrote to analyze our corpus and run our statistics. The final paper pdf describes our analysis process and its outcomes.
+
 ## Corpus Details
 
 ### Sampling Procedure
@@ -35,21 +38,20 @@ We found the long to short note ratios with the Music21 getTimeSignatures functi
 To investigate the structural similarities of the Chinese and German songs, we extracted the length of each phrase in each song. Phrase length is defined as the number of notes in between two breath points, where rests do not count as notes. Phrase length was calculated by extracting and iterating through each song’s Humdrum spine. The beginning and end of phrases were marked by “{“ and “}” in the .krn files.
 #### Contour
 Contour was the most difficult melodic feature to define. We deliberated between using intervallic distances or maximum and minimum note placements. Ultimately, we defined contour as the shape of a phrase as determined by the position of the highest and lowest note in the phrase, along with the pitch of the first and last note of the phrase. We developed 7 different contour categories: flat, ascending (“/”), descending (“\”), V-shaped (“V”), arch (“/\”), N-shaped (“N”), and reverse N (“\/\”).
-To collect the contour types, we extracted the Humdrum spines with the notes listed as their frequency values, and we iterated through the phrases. Following the logic outlined below, we categorized each phrase as a contour type. For the contour assignment algorithm, a midpoint frequency was calculated for each phrase by finding the average between the highest and lowest frequency.
-Flat: The frequencies of the highest and lowest notes are equal. Ascending:
-1) The lowest note is the first note and the highest note is the last note
-2) The first note’s frequency is lower than the midpoint frequency, the lowest note appears before the highest note, and the last note is higher than the midpoint
-Descending:
-1) The highest note is the first note and the lowest note is the last
-note
-2) The first note’s frequency is higher than the midpoint
-frequency, the highest note appears before the lowest note, and
-the last note is lower than the midpoint
-V-Shaped: The first and last note is higher than the midpoint frequency, so the
-lowest note is somewhere in the middle.
-Arch: The first and last note is lower than the midpoint frequency, so the
-highest note is somewhere in the middle.
-N-Shaped: Multiple non-consecutive lowest and highest notes are found in
-the phrase, the first note’s frequency is lower than the midpoint, and the last note’s
-frequency is higher than the midpoint
-Reverse N: Multiple non-consecutive lowest and highest notes are found in the phrase, the first note’s frequency is higher than the midpoint, and the last note’s frequency is lower than the midpoint
+To collect the contour types, we extracted the Humdrum spines with the notes listed as their frequency values, and we iterated through the phrases. Following the logic outlined below, we categorized each phrase as a contour type. For the contour assignment algorithm, a midpoint frequency was calculated for each phrase by finding the average between the highest and lowest frequency. <br>
+##### Flat: 
+The frequencies of the highest and lowest notes are equal. <br>
+##### Ascending: <br>
+- The lowest note is the first note and the highest note is the last note
+- The first note’s frequency is lower than the midpoint frequency, the lowest note appears before the highest note, and the last note is higher than the midpoint <br>
+##### Descending: <br>
+- The highest note is the first note and the lowest note is the last note
+- The first note’s frequency is higher than the midpoint frequency, the highest note appears before the lowest note, and the last note is lower than the midpoint <br>
+##### V-Shaped: 
+The first and last note is higher than the midpoint frequency, so the lowest note is somewhere in the middle. <br>
+##### Arch: 
+The first and last note is lower than the midpoint frequency, so thehighest note is somewhere in the middle. <br>
+##### N-Shaped: 
+Multiple non-consecutive lowest and highest notes are found in the phrase, the first note’s frequency is lower than the midpoint, and the last note’s frequency is higher than the midpoint <br>
+##### Reverse N: 
+Multiple non-consecutive lowest and highest notes are found in the phrase, the first note’s frequency is higher than the midpoint, and the last note’s frequency is lower than the midpoint <br>
